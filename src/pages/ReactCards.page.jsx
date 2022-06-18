@@ -13,7 +13,8 @@ import FunctionsHelper from '../helpers/Functions.helper';
 export default function ReactCards() {
   //States
   const [infoCards, setInfoCards] = useState(cardsData);
-  const [isChecked, setIsChecked] = useState(true);
+  const [isChecked, setIsChecked] = useState(false);
+
   //Functions
   function handleButtonClick() {
     const shuffledData = FunctionsHelper.shuffleArray(infoCards);
@@ -54,7 +55,14 @@ export default function ReactCards() {
         </div>
         <FlashCards>
           {infoCards.map(({ id, title, description }) => {
-            return <Cards key={id} title={title} description={description} />;
+            return (
+              <Cards
+                showFlashTitle={isChecked}
+                key={id}
+                title={title}
+                description={description}
+              />
+            );
           })}
         </FlashCards>
       </Main>
