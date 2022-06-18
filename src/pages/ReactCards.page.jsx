@@ -13,7 +13,7 @@ import FunctionsHelper from '../helpers/Functions.helper';
 export default function ReactCards() {
   //States
   const [infoCards, setInfoCards] = useState(cardsData);
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(true);
 
   //Functions
   function handleButtonClick() {
@@ -21,11 +21,22 @@ export default function ReactCards() {
     setInfoCards(shuffledData);
   }
 
+  function handleFlashCardClick(id) {
+    const updatedCards = [...infoCards];
+    const indexCard = updatedCards.findIndex(card => card.id === id);
+    updatedCards[indexCard].showTitle = !updatedCards[indexCard].showTitle;
+    setInfoCards(updatedCards);
+  }
+
   function handleRadioTitleClick() {
+    const array = [...infoCards].map(card => ({ ...card, showTitle: true }));
+    setInfoCards(array);
     setIsChecked(true);
   }
 
   function handleRadioDescriptionClick() {
+    const array = [...infoCards].map(card => ({ ...card, showTitle: false }));
+    setInfoCards(array);
     setIsChecked(false);
   }
   return (
@@ -54,13 +65,15 @@ export default function ReactCards() {
           </RadioButton>
         </div>
         <FlashCards>
-          {infoCards.map(({ id, title, description }) => {
+          {infoCards.map(({ id, title, description, showTitle }) => {
             return (
               <Cards
-                showFlashTitle={isChecked}
+                showFlashTitle={showTitle}
                 key={id}
+                id={id}
                 title={title}
                 description={description}
+                onToggleFlashCard={handleFlashCardClick}
               />
             );
           })}

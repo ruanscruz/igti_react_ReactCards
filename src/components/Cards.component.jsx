@@ -1,22 +1,18 @@
-import { useEffect, useState } from 'react';
-
 function Cards({
   title = 'Titulo do card',
   description = 'Conteúdo completo do card',
+  id = '',
   showFlashTitle = true,
+  onToggleFlashCard = null,
 }) {
-  //states
-  const [showTitle, setShowTitle] = useState(showFlashTitle);
   //functions
-  useEffect(() => {
-    setShowTitle(showFlashTitle);
-  }, [showFlashTitle]);
-
   function handleCardClick() {
-    setShowTitle(showTitle => !showTitle);
+    if (onToggleFlashCard) {
+      onToggleFlashCard(id);
+    }
   }
   //locals
-  const fontSizeClass = showTitle
+  const fontSizeClass = showFlashTitle
     ? 'text-xl text-gray-600'
     : 'text-sm text-gray-700';
   return (
@@ -27,7 +23,7 @@ function Cards({
       style={{ fontFamily: "'JetBrains Mono', 'Courier New', monospace" }}
       onClick={handleCardClick}
     >
-      {showTitle ? title : description}
+      {showFlashTitle ? title : description}
     </div>
   );
 }

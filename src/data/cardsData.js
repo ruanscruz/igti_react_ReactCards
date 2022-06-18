@@ -54,7 +54,7 @@ const data = [
 
 const cardsData = [...data]
   .map(item => {
-    return { id: CardsService.getNewId(), ...item };
+    return { id: CardsService.getNewId(), ...item, showTitle: true };
   })
   .sort((a, b) => a.title.localeCompare(b.title));
 
