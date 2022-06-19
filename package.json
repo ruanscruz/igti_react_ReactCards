@@ -13,6 +13,7 @@
     "react-icons": "4.2.0",
     "react-scripts": "4.0.3",
     "react-spinners": "0.10.6",
+    "react-tabs": "3.2.2",
     "uuid": "8.3.2"
   },
   "devDependencies": {
@@ -51,5 +52,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/ruanscruz/igti_react_ReactCards.git",
+  "author": "Ruan Cruz <ruanscruz@icloud.com>",
+  "license": "MIT"
 }

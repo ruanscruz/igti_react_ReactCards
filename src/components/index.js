@@ -4,3 +4,6 @@ export { FlashCards } from './FlashCards.component';
 export { Cards } from './Cards.component';
 export { Button } from './Button.component';
 export { RadioButton } from './RadioButton.component';
+export { Loading } from './Loading.component';
+export { Error } from './Error.component';
+export { CardItem } from './CardItem.component';
